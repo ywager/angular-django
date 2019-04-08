@@ -17,6 +17,9 @@
             Password is required.
           </mat-error>
         </mat-form-field>
+        <mat-error *ngIf="errorMessage">
+        {{errorMessage}}
+        </mat-error>
       </mat-card-content>
       <mat-card-actions fxLayoutAlign="center">
         <button mat-raised-button color="primary" fxFlex (click)="submit()"
