@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UserService } from '../core/services/user.service';
+import { AuthService } from '../core/services/auth.service';
 import { Observable, of, throwError } from 'rxjs';
 import { map, catchError} from 'rxjs/operators';
 
@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private userService: UserService,
+    private authService: AuthService,
   ) { }
 
   ngOnInit() {
@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
   }
 
   submit(): void {
-    this.userService.login(this.form.value).pipe(
+    this.authService.login(this.form.value).pipe(
       catchError(error => {
         this.errorMessage = 'Wrong username or password';
         this.form.get('username').setErrors(['invalid']);
@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
         return throwError(error);
       })
     ).subscribe(response => {
-      this.userService.setToken(response.token);
+      this.authService.setToken(response.token);
       this.router.navigate(['/']);
     });
   }

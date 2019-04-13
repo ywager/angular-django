@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class AuthService {
 
   constructor(
     private http: HttpClient,
@@ -30,5 +30,9 @@ export class UserService {
 
   private getToken(): string {
     return localStorage.getItem('token');
+  }
+
+  removeToken(): void {
+    localStorage.removeItem('token');
   }
 }
