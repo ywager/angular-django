@@ -46,7 +46,7 @@ import { MatMagicSearchModule } from './components/mat-magic-search/mat-magic-se
     MatDialogModule,
     MatSnackBarModule,
     MessagesModule,
-    MatMagicSearchModule
+    MatMagicSearchModule,
   ],
   exports: [
     FormsModule,
@@ -69,7 +69,7 @@ import { MatMagicSearchModule } from './components/mat-magic-search/mat-magic-se
     MatDialogModule,
     MatSnackBarModule,
     MessagesModule,
-    MatMagicSearchModule
+    MatMagicSearchModule,
   ]
 })
 export class SharedModule { }

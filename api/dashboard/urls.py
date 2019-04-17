@@ -20,4 +20,5 @@ from auth import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r"^auth/login/$", views.LoginView.as_view(), name="login"),
+    url(r"^api/users/$", views.UsersView.as_view(), name="users"),
 ]
