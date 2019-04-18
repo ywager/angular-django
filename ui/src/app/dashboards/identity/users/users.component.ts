@@ -76,10 +76,11 @@ export class UsersComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      console.log(result);
       if (result) {
-        this.message.success('User ' + result.username + ' was successfully created.');
+        this.usersService.createUser(result).subscribe(response => {
+          this.message.success('User ' + result.username + ' was successfully created.');
+          this.dataSource.data = [response, ...this.dataSource.data];
+        });
       }
     });
   }

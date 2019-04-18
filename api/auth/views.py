@@ -41,3 +41,14 @@ class UsersView(generics.ListCreateAPIView):
         users = User.objects.all()
         serializer = UserSerializer(users, many=True)
         return Response(status= status.HTTP_200_OK, data=serializer.data)
+
+    def post(self, request, *args, **kwargs):
+        username = request.data.get("username", "")
+        password = request.data.get("password", "")
+        new_user = User.objects.create_user(
+            username=username, password=password
+        )
+        return Response(
+            data=UserSerializer(new_user).data,
+            status=status.HTTP_201_CREATED
+        )
